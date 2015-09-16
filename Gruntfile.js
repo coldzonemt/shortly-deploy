@@ -38,8 +38,13 @@ module.exports = function(grunt) {
     },
 
     jshint: {
-      files: [
+      all: [
         // Add filespec list here
+        'app/**/*.js',
+        'lib/*.js',
+        'public/client/*.js',
+        'server-config.js',
+        'server.js'
       ],
       options: {
         force: 'true',
@@ -106,6 +111,7 @@ module.exports = function(grunt) {
   ////////////////////////////////////////////////////
 
   grunt.registerTask('test', [
+    'jshint',
     'mochaTest'
   ]);
 
@@ -124,6 +130,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
       // add your production server task here
+      'test', 
+      'build', 
+      'upload'
   ]);
 
 
