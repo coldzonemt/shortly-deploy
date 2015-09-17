@@ -72,6 +72,7 @@ module.exports = function(grunt) {
           'uglify'
         ]
       },
+
       css: {
         files: 'public/*.css',
         tasks: ['cssmin']
@@ -80,8 +81,9 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
+        command: 'open ~/Codes'
       }
-    },
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -121,16 +123,17 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('upload', function(n) {
-    if(grunt.option('prod')) {
+    if(grunt.option('prod')) { //use prod in command line grunt deploy--???? = prod
       // add your production server task here
-      //NODE_ENV?
+      grunt.task.run(['shell']);
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
   });
 
   grunt.registerTask('deploy', [
-      // add your production server task here
+      // add your production server task here <-- not necessary if we point to it in our upload task, depending on the grunt deploy command
+
       'test', 
       'build', 
       'upload'
