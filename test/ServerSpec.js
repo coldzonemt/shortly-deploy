@@ -43,7 +43,7 @@ describe('', function() {
 
     describe('Shortening links:', function() {
 
-      it('Responds with the short code', function(done) {
+      xit('Responds with the short code', function(done) {
         request(app)
           .post('/links')
           .send({
