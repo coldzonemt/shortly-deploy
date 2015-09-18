@@ -119,7 +119,7 @@ describe('', function() {
           .end(done);
       });
 
-      xit('Shortcode redirects to correct url', function(done) {
+      it('Shortcode redirects to correct url', function(done) {
         var sha = link.code;
         request(app)
           .get('/' + sha)
